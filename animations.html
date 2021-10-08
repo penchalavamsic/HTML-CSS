@@ -1,0 +1,31 @@
+<html>
+<head>
+<style>
+ div#mydiv {
+ width:150px;
+ height:150px;
+ background-color:red;
+ -webkit-animation-name:example;
+ -webkit-animation-duration:5s;
+ -webkit-animation-iteration-count: 3;
+ position: relative;
+ animation-name:example;
+ animation-duration:5s;
+ animation-iteration-count: 3;
+ }
+ @-webkit-keyframes example{
+ 50% {background-color:red;left: 10px;top: 10px;}
+ 100%{background-colr:yellow;left: 150px;top: 150px;}
+ 
+ }
+ @keyframes example{
+ 50% {background-color:red;left: 10px;top: 10px;}
+ 100%{background-colr:yellow;left: 150px;top: 150px;}
+ 
+ }
+</style>style>
+</head>
+<body>
+<div id="mydiv"></div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+ <html>
+<head><title>this is a title</title>
+</head>
+<br
+<hr>
+<h1>this is a heading</h1>
+<p>this is a paragraph</p>
+<p><center>the paragraph starts from the center</center></p> 
+<a
+href="http://www.google.com">google</a>
+<body bgcolor="green">
+</body>
+<p><font color="orange">this is a font color</font></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
