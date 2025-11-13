@@ -1,0 +1,53 @@
+<!--HTML Assignment Q 5a-->
+<html>
+    <head>
+        <style>
+            th{
+                background-color: rgb(147, 133, 255);
+            }
+        </style>
+    </head>
+    <body>
+        <table border="1">
+            <tr>
+            <th>Name</th>
+            <th>Value</th>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td><input type="text" name="Name"></td>
+            </tr>
+            <tr>
+                <td>Sex</td>
+                <td>
+                    <input type="radio" name="Sex" value="Male">Male<br>
+                    <input type="radio" name="Sex" value="Female">Female
+                </td>
+            </tr>
+            <tr>
+                <td>Eye color</td>
+                <td>
+                    <select multiple name="eyecolor">
+                        <option value="blue">Blue</option>
+                        <option value="green">Green</option>
+                        <option value="brown">Brown</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Check all that apply</td>
+                <td>
+                    <input type="checkbox" name="box" value="6feet">Over 6 feet tall<br>
+                    <input type="checkbox" name="box" value="200">Over 200 pounds
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">Describe your athletic ability:<br><textarea></textarea></td>
+                
+            </tr>
+            <tr>
+                <td style="text-align:center;" colspan="2"><input type="submit" value="Enter my information"></td>
+            </tr>
+        </table>
+    </body>
+</html>
