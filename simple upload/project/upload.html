@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upload Media</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f4f4;
+        padding: 20px;
+    }
+
+    .upload-container {
+        max-width: 500px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"], textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 15px;
+    }
+
+    button:hover {
+        background: #0056b3;
+    }
+</style>
+</head>
+<body>
+
+<div class="upload-container">
+    <h2>Upload Photo / Video</h2>
+
+    <label>Title</label>
+    <input type="text" id="title">
+
+    <label>Description</label>
+    <textarea id="description"></textarea>
+
+    <label>Choose File (Image / Video)</label>
+    <input type="file" id="file" accept="image/*,video/*">
+
+    <button onclick="saveData()">Upload</button>
+</div>
+
+<script>
+function saveData() {
+    let title = document.getElementById('title').value;
+    let desc = document.getElementById('description').value;
+    let file = document.getElementById('file').files[0];
+
+    if (!file) {
+        alert("Please select a file");
+        return;
+    }
+
+    let reader = new FileReader();
+    reader.onload = function(e) {
+        let mediaURL = e.target.result;
+
+        let item = {
+            title: title,
+            desc: desc,
+            media: mediaURL,
+            type: file.type.startsWith("image") ? "image" : "video"
+        };
+
+        let gallery = JSON.parse(localStorage.getItem("gallery")) || [];
+        gallery.push(item);
+        localStorage.setItem("gallery", JSON.stringify(gallery));
+
+        alert("Uploaded Successfully!");
+        window.location.href = "display.html";//changed to display page
+    }
+
+    reader.readAsDataURL(file);
+}
+</script>
+
+</body>
+</html>

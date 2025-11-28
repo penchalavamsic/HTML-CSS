@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page - RK Events</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container{
+            width: 350px;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        h2{
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input{
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button{
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: #ff5733;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        button:hover{
+            background: #e64a24;
+        }
+
+        .link{
+            text-align: right;
+            margin-top: 10px;
+        }
+
+        .link a{
+            color: #007bff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .hidden{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Login Section -->
+    <div id="loginSection">
+        <h2>Login</h2>
+
+        <input type="text" id="loginUser" placeholder="Email or Phone Number">
+        <input type="password" id="loginPass" placeholder="Password">
+
+        <button onclick="login()">Login</button>
+
+        <div class="link">
+            <a onclick="showForgot()">Forgot Password?</a>
+        </div>
+    </div>
+
+    <!-- Forgot Password Section -->
+    <div id="forgotSection" class="hidden">
+        <h2>Forgot Password</h2>
+
+        <input type="text" id="forgotUser" placeholder="Enter Email or Phone Number">
+        <button onclick="sendOTP()">Send OTP</button>
+
+        <div class="link">
+            <a onclick="backToLogin()">Back to Login</a>
+        </div>
+    </div>
+
+    <!-- OTP Section -->
+    <div id="otpSection" class="hidden">
+        <h2>Enter OTP</h2>
+
+        <input type="text" id="otpInput" placeholder="Enter OTP">
+        <button onclick="verifyOTP()">Verify OTP</button>
+    </div>
+
+    <!-- Reset Password Section -->
+    <div id="resetSection" class="hidden">
+        <h2>Reset Password</h2>
+
+        <input type="password" id="newPass" placeholder="New Password">
+        <input type="password" id="confirmPass" placeholder="Confirm Password">
+
+        <button onclick="resetPassword()">Update Password</button>
+    </div>
+
+</div>
+
+<script>
+    function showForgot() {
+        document.getElementById("loginSection").classList.add("hidden");
+        document.getElementById("forgotSection").classList.remove("hidden");
+    }
+
+    function backToLogin() {
+        document.getElementById("forgotSection").classList.add("hidden");
+        document.getElementById("loginSection").classList.remove("hidden");
+    }
+
+    function sendOTP() {
+        let user = document.getElementById("forgotUser").value;
+        if (user === "") {
+            alert("Please enter Email or Phone Number");
+            return;
+        }
+
+        alert("OTP sent successfully!");
+
+        document.getElementById("forgotSection").classList.add("hidden");
+        document.getElementById("otpSection").classList.remove("hidden");
+    }
+
+    function verifyOTP() {
+        let otp = document.getElementById("otpInput").value;
+
+        if (otp === "1234") {  // Test OTP
+            alert("OTP Verified!");
+
+            document.getElementById("otpSection").classList.add("hidden");
+            document.getElementById("resetSection").classList.remove("hidden");
+        } else {
+            alert("Invalid OTP. Try 1234");
+        }
+    }
+
+    function resetPassword() {
+        let p1 = document.getElementById("newPass").value;
+        let p2 = document.getElementById("confirmPass").value;
+
+        if (p1 === "" || p2 === "") {
+            alert("Please enter the passwords");
+            return;
+        }
+
+        if (p1 !== p2) {
+            alert("Passwords do not match");
+            return;
+        }
+
+        alert("Password Updated Successfully!");
+        location.reload();
+    }
+
+    function login() {
+        let user = document.getElementById("loginUser").value;
+        let pass = document.getElementById("loginPass").value;
+
+        if (user === "" || pass === "") {
+            alert("Please enter login details");
+            return;
+        }
+
+        alert("Login Successful!");
+            window.location.href = "upload.html";//redirecting to next page
+
+    }
+
+</script>
+
+</body>
+</html>
